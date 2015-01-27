@@ -42,8 +42,9 @@ for suit in SUITS:
 ## Shuffle the deck
 import random
 random.shuffle(deck)
-print(deck)
-print(len(deck))
+##print(deck)
+##print(len(deck))
+
 
 ## Calculate the score of the hand
 
@@ -104,6 +105,8 @@ else:
 
 
   ##    Computer must take more cards while computer score < 17
+
+  import time
 
   while dealer_score <17:
     print("The dealer will take another card...")
