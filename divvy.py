@@ -24,7 +24,8 @@
 #2)print(station name and available bikes) of the first element of the new list
 #  - which would be the shortest distance
 # I know young has coordinates = 41.793414,-87.600915
-# Nick Pann helped me trouble shoot my broken longitude calculation - thanks Nick!
+# Nick Pann helped me trouble shoot my broken longitude calculation and work through
+# a different strategy than my original- thanks Nick!
 
 import json
 from urllib.request import urlopen
