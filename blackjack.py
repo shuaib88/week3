@@ -44,6 +44,22 @@ random.shuffle(deck)
 print(deck)
 print(len(deck))
 
+## Calculate the score of the hand
+
+def calculate_score(cards):
+  value = 0
+  for card in cards:
+    face = card[:-1]
+    if face in ['J', 'Q', 'K']:
+      points = 10
+    elif face == 'A':
+      points = 11
+    else:
+      points = int(face)
+    value += points
+  return value
+    
+
 ## Deal the first two cards to user
 print()
 hand = [deck.pop(0), deck.pop(0)]
@@ -67,10 +83,16 @@ print(len(deck))
 ##    If computer score goes over 21, computer loses.
 ##    If computer score is 17 to 20, winner is determined by higher score.
 
+## My solution
 
 
 
 
+
+
+
+
+##Cohen's Solution
 ##import random
 ##import time
 ##
