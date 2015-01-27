@@ -25,7 +25,8 @@
 # - 3. Allow the user to play as many games as they want
 # - 4. Dealing cards to the cmputer should have a dramatic, 4-second delay
 
-# Here's the psuedocode we wrote on the board in class:
+## My solution
+
 
 ## Get a deck of cards
 
@@ -63,35 +64,82 @@ def calculate_score(cards):
 ## Deal the first two cards to user
 print()
 hand = [deck.pop(0), deck.pop(0)]
-print(hand)
-print()
-print(deck)
-print(len(deck))
+score = calculate_score(hand)
+
+print("Your hand:", ", ".join(hand))
+
 
 ## User can choose to take cards as long as score < 21
 
+while score < 21 and input ("Do you want another card? (y/n) ") == 'y':
+  hand.append(deck.pop(0))
+  score = calculate_score(hand)
+  print("Your hand:", ", ".join(hand))
+
+
+
 ## If user goes over 21, game is over - print you lose
+
+if score > 21:
+  print("Too high, you lose!")
+  
 
 ## If user reaches 21, game is over - print you win
 
+elif score == 21:
+  print("You win!")
+
+
 ## If user less than 21, then it's the dealer's turn:
 
+else:
+  print("You have %s points." % score)
+  print()
 
-##    Computer takes two cards
-##    Computer must take more cards while computer score < 17
-##    If computer score reached 21, computer wins.
-##    If computer score goes over 21, computer loses.
-##    If computer score is 17 to 20, winner is determined by higher score.
-
-## My solution
-
-
-
+  ##    Computer takes two cards
+  
+  dealer_hand = [deck.pop(0), deck.pop(0)]
+  dealer_score = calculate_score(dealer_hand)
+  print("Dealer has", " ".join(dealer_hand))
 
 
+  ##    Computer must take more cards while computer score < 17
+
+  while dealer_score <17:
+    print("The dealer will take another card...")
+    time.sleep(5)
+    dealer_hand.append(deck.pop(0))
+    dealer_score = calculate_score(dealer_hand)
+    print("Dealer now has", " ".join(dealer_hand))
+    time.sleep(3)
 
 
+  ##    If computer score greater > 21, computer loses, you win.
 
+  if dealer_score > 21:
+    print("Dealer busts, you win")
+
+
+  ##    If computer score greater reaches 21, copmuter win.
+
+  elif dealer_score == 21:
+    print("Dealer wins!!, you lose!!")
+
+  ##    If computer score greater than yours, computer wins
+
+  elif dealer_score > score:
+    print("Dealer is higher, you lose")
+
+  ##    If computer score equal to yours - it's a tie
+
+  elif dealer_score == score:
+    print("It's a tie... noone wins")
+
+  ##    Otherwise, obviously you have a score greater than computer - you win
+
+  else:
+    print("You win")
+    
 ##Cohen's Solution
 ##import random
 ##import time
