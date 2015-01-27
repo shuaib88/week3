@@ -34,20 +34,26 @@ data = urlopen(webservice_url).read().decode("utf8")
 result = json.loads(data)
 stations = result['stationBeanList']
 
+print("this script will tell you the nearest station to young memorial hall and number of bikes available")
+print()
+confirm = input("Would you like to find closest station and number of available bikes? ")
 
-youngLat = 41.793414
-youngLong = -87.600915
-stationsByDistance = []
+if confirm == ("yes" or "Yes" or "YES"):
+    youngLat = 41.793414
+    youngLong = -87.600915
+    stationsByDistance = []
 
-for station in stations:
-    surfaceDistance = math.sqrt(((station['latitude'] - youngLat) ** 2) + ((station['longitude']) ** 2)) 
-    stationsByDistance.append([surfaceDistance, station['stationName'], station['availableBikes']]) 
+    for station in stations:
+        surfaceDistance = math.sqrt(((station['latitude'] - youngLat) ** 2) + ((station['longitude']) ** 2)) 
+        stationsByDistance.append([surfaceDistance, station['stationName'], station['availableBikes']]) 
 
-stationsByDistance = sorted(stationsByDistance)
+    stationsByDistance = sorted(stationsByDistance)
 
-print(stationsByDistance[0][1], "is the nearest station and it has", stationsByDistance[0][2],
-      "available bikes")
+    print(stationsByDistance[0][1], "is the nearest station and it has", stationsByDistance[0][2],
+          "available bikes")
 
+else:
+    print("Sorry, that's all I can do for now")
 
 ##something is strange here - according to stationsByDistance - 'shore drive & 55th' is the closest
 ##However, when I look at google map I find the 'Ellis Ave & 58th St' is nearer,
