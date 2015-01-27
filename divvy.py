@@ -44,7 +44,7 @@ if confirm == ("yes" or "Yes" or "YES"):
     stationsByDistance = []
 
     for station in stations:
-        surfaceDistance = math.sqrt(((station['latitude'] - youngLat) ** 2) + ((station['longitude']) ** 2)) 
+        surfaceDistance = math.sqrt(((station['latitude'] - youngLat) ** 2) + ((station['longitude'])- youngLong) ** 2)
         stationsByDistance.append([surfaceDistance, station['stationName'], station['availableBikes']]) 
 
     stationsByDistance = sorted(stationsByDistance)
@@ -55,18 +55,4 @@ if confirm == ("yes" or "Yes" or "YES"):
 else:
     print("Sorry, that's all I can do for now")
 
-##something is strange here - according to stationsByDistance - 'shore drive & 55th' is the closest
-##However, when I look at google map I find the 'Ellis Ave & 58th St' is nearer,
-##I double check the math
-##however when i double check the math, according to coordinates spit out by divvy JSON, the result
-##is correct
-##Young 41.793414, -87.600915
-##Ellis - 41.788838, -87.600990
-##Shore - 41.795397, -87.579489
-##
-###shore to young
-##eval(math.sqrt((41.795397 - 41.793414)**2 + (-87.579489 - -87.600915)**2)) = 
-##
-###ellis to shore
-##eval(math.sqrt((41.788838 - 41.793414)**2 + (-87.579489 - -87.600990)**2))
 
